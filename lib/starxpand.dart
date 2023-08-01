@@ -108,4 +108,13 @@ class StarXpand {
 
     _removeCallbackHandler(guid);
   }
+
+  Future<bool> isOnline(StarXpandPrinter printer) async {
+    try {
+      await _channel.invokeMethod('open', {"printer": printer.toMap()});
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
