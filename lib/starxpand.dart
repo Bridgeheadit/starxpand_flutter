@@ -117,4 +117,12 @@ class StarXpand {
       return false;
     }
   }
+
+  static Future<bool> open(StarXpandPrinter printer) async {
+    return await _channel.invokeMethod('open', {"printer": printer.toMap()});
+  }
+
+  static Future<bool> close(StarXpandPrinter printer) async {
+    return await _channel.invokeMethod('close', {"printer": printer.toMap()});
+  }
 }
