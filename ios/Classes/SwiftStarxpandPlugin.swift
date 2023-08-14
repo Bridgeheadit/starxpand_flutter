@@ -24,6 +24,8 @@ public class SwiftStarxpandPlugin: NSObject, FlutterPlugin {
         case "printDocument": _printDocument(args: call.arguments as! [String:Any?], result: result)
         case "startInputListener": _startInputListener(args: call.arguments as! [String:Any?], result: result)
         case "stopInputListener": _stopInputListener(args: call.arguments as! [String:Any?], result: result)
+        case "open": _open(args: call.arguments as! [String:Any?], result: result)
+        case "close": _close(args: call.arguments as! [String:Any?], result: result)
             default:
             result(false)
         }
@@ -92,6 +94,35 @@ public class SwiftStarxpandPlugin: NSObject, FlutterPlugin {
         }
     }
     
+
+    func _open(args: [String:Any?], result: @escaping FlutterResult) {
+        let printer = getPrinter(args["printer"] as! [String:Any])
+
+    
+
+        Task {
+            do {
+                try await printer.open()
+            result(true)
+             
+            } catch let e3rror {
+           
+
+                result(false)
+            }
+        }
+    }
+
+    func _close(args: [String:Any?], result: @escaping FlutterResult) {
+        let printer = getPrinter(args["printer"] as! [String:Any])
+
+        Task {
+            await printer.close()
+
+            result(true)
+        }
+    }
+
     func _printDocument(args: [String:Any?], result: @escaping FlutterResult) {
         let printer = getPrinter(args["printer"] as! [String:Any])
 
