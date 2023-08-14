@@ -117,9 +117,15 @@ public class SwiftStarxpandPlugin: NSObject, FlutterPlugin {
         let printer = getPrinter(args["printer"] as! [String:Any])
 
         Task {
+            do {
             await printer.close()
 
             result(true)
+             } catch let e3rror {
+           
+
+                result(false)
+            }
         }
     }
 
