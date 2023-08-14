@@ -103,7 +103,7 @@ public class SwiftStarxpandPlugin: NSObject, FlutterPlugin {
         Task {
             do {
                 try await printer.open()
-            result(true)
+                result(true)
              
             } catch let e3rror {
            
@@ -118,9 +118,9 @@ public class SwiftStarxpandPlugin: NSObject, FlutterPlugin {
 
         Task {
             do {
-            await printer.close()
+                await printer.close()
 
-            result(true)
+                result(true)
              } catch let e3rror {
            
 
